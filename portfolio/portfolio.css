@@ -1,0 +1,77 @@
+body, html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.intro {
+    padding: 10px;
+    text-align: center;
+}
+
+.tag {
+    display: inline-block;
+    background-color: grey;
+    padding: 5px 10px;
+    margin: 2px;
+    color: white;
+    font-size: 14px;
+    border-radius: 15px;
+    cursor: default;
+    transition: background-color 0.3s;
+}
+
+
+.python { background-color: #4CAF50; }
+.java { background-color: #2196F3; }
+.javascript {  background-color: #f0db4f; }
+.typescript {  background-color: #f0db4f; }
+
+.cpp { background-color: #f34b7d; }
+.html-css { background-color: #e34c26; }
+
+
+.tag:hover{
+    background-color: #333;
+
+}
+
+#searchInput {
+    padding: 10px;
+    width: 300px;
+    margin-top: 10px;
+}
+
+#portfolioContainer {
+    column-count: 3;  /* Adjust based on your preferred number of columns */
+    column-gap: 40px;
+    width: 90%;
+    max-width: 1500px; /* Adjust or remove this as necessary */
+    margin: auto;
+    padding: 20px;
+}
+
+.projectBox {
+    break-inside: avoid; /* Prevents boxes from splitting across columns */
+    margin-bottom: 40px;
+    width: 100%;  /* This makes sure the box takes up the full column width */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden; /* Optional, for content that might overflow */
+    padding: 10px;
+    padding-left: 20px;
+}
+
+
+
+img {
+    width: 75%;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto 20px; /* Center image and add bottom margin */
+}
+
+
+
+.projectBox:hover {
+    transform: translateY(-5px);
+}

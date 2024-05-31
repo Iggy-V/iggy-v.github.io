@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="/assets/css/header.css"> 
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+
+</head>
+<body>
+    <div id="header"></div> <!-- Placeholder for the header -->
+
+    <div class="intro">
+        <input type="text" id="searchInput" placeholder="Search portfolio by title or tag...">
+    </div>
+
+    <div id="portfolioContainer">
+        <!-- Portfolio items added by JavaScript -->
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+    <script>
+        // Function to load HTML content and inject it into the DOM
+        function loadHTML(url, selector, insertMethod = 'innerHTML') {
+            fetch(url)
+                .then(response => response.text())
+                .then(html => {
+                    if (insertMethod === 'insertAdjacentHTML') {
+                        document.querySelector(selector).insertAdjacentHTML('afterbegin', html);
+                    } else {
+                        document.querySelector(selector)[insertMethod] = html;
+                    }
+                })
+                .catch(error => console.error(`Error loading the HTML from ${url}:`, error));
+        }
+    
+        // Load the header
+        loadHTML("/assets/html/header.html", 'body', 'insertAdjacentHTML');
+    
+        // Load the footer
+        loadHTML("/assets/html/footer.html", '#footer-placeholder');
+        
+    </script>
+    
+    
+</body>
+</html>

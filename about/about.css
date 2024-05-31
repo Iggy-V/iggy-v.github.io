@@ -1,0 +1,59 @@
+body {
+    font-family: monospace;
+    margin: 40px;
+    color: #333;
+}
+.resume {
+    max-width: 800px;
+    margin: auto;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 18px;
+    color: #555;
+}
+.about-me p, .education p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.skills {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.skill {
+    height: 20px;
+    border-radius: 8px;
+}
+
+.python { width: 80%; background-color: #4CAF50; }
+.java { width: 60%; background-color: #2196F3; }
+.javascript { width: 60%; background-color: #f0db4f; }
+.cpp { width: 55%; background-color: #f34b7d; }
+.html-css { width: 45%; background-color: #e34c26; }
+.office { width: 85%; background-color: #0078D7; }
+.data-analysis { width: 75%; background-color: #f2c811; }
+.stata { width: 70%; background-color: #1a936f; }
+
+
+#home{
+    color: black ;
+    text-decoration: none;
+    font-weight: 1000;
+    text-shadow: 2px 2px #ffffff;
+}

@@ -1,0 +1,68 @@
+body, html {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.intro {
+    padding: 10px;
+    padding-top: 0;
+    text-align: center;
+}
+h1{
+    font-family: 'Helvetica', serif;
+    font-weight: 900;
+    font-size: 60px;
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 72px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+.tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 2px;
+    background-color: #eee; /* Light grey like aged paper */
+    border: 1px  #666; /* Dashed border adds to the old style */
+    font-size: 14px; /* Smaller font size for tags */
+    border-radius: 0; /* No rounded corners for a more authentic newspaper feel */
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.tag:hover {
+    background-color: #ccc; /* Darker on hover like interactive ads in newspapers */
+    color: #000; /* Ensuring high contrast on hover */
+}
+
+#searchInput {
+    padding: 10px;
+    width: 300px;
+    margin-top: 10px;
+}
+
+#portfolioContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.projectBox {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    width: calc(25% - 40px); /* Subtract total horizontal padding and margins */
+    transition: transform 0.3s ease-in-out;
+
+
+}
+
+
+.projectBox:hover {
+    transform: translateY(-5px);
+}

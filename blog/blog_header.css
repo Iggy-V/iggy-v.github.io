@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', serif; /* Mimics old newspaper typefaces */
+    background-color: #f4f4f4; /* Off-white, paper-like background */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.header-title {
+    margin: 0;
+    color: black; /* Black color for the title */
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, sans-serif;
+}
+
+.header-nav a {
+    text-decoration: none;
+    padding: 8px 16px;
+    color: #333;
+    background-color: transparent; /* No solid fill, only outlines */
+    border: 2px solid #333; /* Solid border mimicking old style */
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0; /* Remove rounded corners for a more traditional look */
+    transition: background-color 0.3s, transform 0.2s;
+    text-shadow: none; /* Remove modern text-shadow */
+}
+
+.header-nav a:hover {
+    background-color: #ddd; /* Light grey background on hover */
+    color: #222; /* Slightly darker text on hover */
+}
+
