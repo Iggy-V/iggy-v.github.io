@@ -1,0 +1,76 @@
+body, html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.intro {
+    padding: 10px;
+    text-align: center;
+}
+
+.tag {
+    display: inline-block;
+    background-color: grey;
+    padding: 5px 10px;
+    margin: 2px;
+    color: white;
+    font-size: 14px;
+    border-radius: 15px;
+    cursor: default;
+    transition: background-color 0.3s;
+}
+
+
+.python { background-color: #4CAF50; }
+.java { background-color: #2196F3; }
+.javascript {  background-color: #f0db4f; }
+.typescript {  background-color: #f0db4f; }
+
+.cpp { background-color: #f34b7d; }
+.html-css { background-color: #e34c26; }
+
+
+.tag:hover{
+    background-color: #333;
+
+}
+
+#searchInput {
+    padding: 10px;
+    width: 300px;
+    margin-top: 10px;
+}
+
+#portfolioContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    justify-content: space-around; /* Spaces out items evenly */
+    padding: 20px;
+    max-width: 1500px; /* Adjust or remove as necessary */
+    margin: auto;
+}
+
+.projectBox {
+    flex: 1 1 30%; /* Flex-grow, flex-shrink, and flex-basis */
+    margin-bottom: 40px; /* Vertical spacing between rows */
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 10px 20px; /* Padding inside each box */
+    margin: 10px; /* Adjust margin around each box for spacing */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    overflow: hidden; /* Optional, for content that might overflow */
+}
+
+
+img{
+    width: 95%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.projectBox:hover {
+    transform: translateY(-5px);
+}

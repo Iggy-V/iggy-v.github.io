@@ -39,11 +39,12 @@ body, html {
     padding: 10px;
     width: 300px;
     margin-top: 10px;
+    border-radius: 15px;
 }
 
 #portfolioContainer {
     column-count: 3;  /* Adjust based on your preferred number of columns */
-    column-gap: 40px;
+    column-gap: 75px;
     width: 90%;
     max-width: 1500px; /* Adjust or remove this as necessary */
     margin: auto;
@@ -54,14 +55,35 @@ body, html {
     break-inside: avoid; /* Prevents boxes from splitting across columns */
     margin-bottom: 40px;
     width: 100%;  /* This makes sure the box takes up the full column width */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
     border-radius: 15px;
+    outline: 1px   solid   #ccc;
     overflow: hidden; /* Optional, for content that might overflow */
     padding: 10px;
     padding-left: 20px;
 }
 
+.button {
+    padding: 10px 20px; /* Slightly larger than tag for better clickability */
+    background-color: transparent; /* Green, similar to your .python tag for a tech feel */
+    margin-left: 5px;
+    color: black;
+    font-size: 14px;
+    border: solid 1px black;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none; /* Removes the outline to maintain a clean look */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
 
+.button:hover {
+    background-color: #d0cfcf; /* Darker on hover, similar to your tag hover effect */
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+.button:active {
+    transform: scale(0.95); /* Mimics a button press effect */
+}
 
 img {
     width: 75%;
