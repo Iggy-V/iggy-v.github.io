@@ -1,12 +1,92 @@
 body {
     font-family: monospace;
-    margin: 40px;
+    /* margin: 40px; */
     color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+
+.container {
+    display: flex;
+    height: 90vh; /* Use full viewport height, adjust as needed */
+    overflow: hidden;
+    position: relative; /* Ensure relative positioning for absolute children */
+    margin: 30px;
+    margin-bottom: 0;
+}
+
+#image {
+    position: absolute;
+    top: 40%; /* Center vertically */
+    left: 50%; /* Initially place it in the middle horizontally */
+    transform: translate(-50%, -50%); /* Adjust to truly center the image */
+    transition: transform 1s ease-in-out; /* Smooth transition for movement */
+    width: 500px; /* Specify a fixed width */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Shadow at the bottom */
+
+}
+
+.content {
+    opacity: 0;
+    position: absolute;
+    left: 50%; /* Start from the center of the screen */
+    top: 0;
+    width: 50%; /* Set width to occupy the remaining half of the container */
+    height: 100%; /* Full height */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: right; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    padding: 20px; /* Add padding for better text appearance */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    transition: opacity 1s, transform 1s ease-in-out; /* Smooth transitions */
+    transform: translateX(100%); /* Initially positioned off-screen to the right */
+    font-size: 24px;
+    transform: translateX(100%); /* Start off-screen to the right */
+
+}
+
+.content.active {
+    transform: translateX(0); /* Move into view */
+    opacity: 1;
+}
+
+
+/* css */
+.section {
+    overflow: hidden; /* Prevents elements from being visible outside this container */
+}
+
+.title, .meat {
+    opacity: 0; /* Start elements as invisible */
+    transition: transform 0.75s ease-out, opacity 0.75s ease-out;
+}
+
+.title {
+    transform: translateX(-50%); /* Start headings off-screen to the left */
+}
+
+.meat {
+    transform: translateX(50%); /* Start content off-screen to the right */
+}
+
+/* Classes to add via JavaScript when in view */
+.title.in-view, .meat.in-view {
+    opacity: 1;
+    transform: translateX(0); /* Move into view */
+}
+
+
+
+
 .resume {
-    max-width: 800px;
+    max-width: 80%;
     margin: auto;
 }
+
 
 h1, h2, h3 {
     color: #333;
@@ -56,4 +136,21 @@ h3 {
     text-decoration: none;
     font-weight: 1000;
     text-shadow: 2px 2px #ffffff;
+}
+
+.picture {
+    margin: 0 auto; /* Centers the container horizontally */
+    margin-top: 20px; /* Adds some space between the text and the image */
+    width: 500px; /* Size of the circle */
+    height: 500px; /* Size of the circle */
+    border-radius: 50%; /* Makes the container a circle */
+    overflow: hidden; /* Hides anything outside the circle */
+    display: flex; /* Uses flexbox to center the image inside the container */
+    justify-content: center; /* Center horizontally inside the container */
+    align-items: center; /* Center vertically inside the container */
+}
+
+.picture img {
+    width: 100%; /* Make sure the image covers the container width */
+    height: auto; /* Keep the image aspect ratio */
 }

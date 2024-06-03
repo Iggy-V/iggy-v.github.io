@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/assets/css/header.css">
     <link rel="stylesheet" href="/assets/css/footer.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <script src="about.js"></script>
 
 </head>
 <body>
@@ -34,16 +35,25 @@
         loadHTML("/assets/html/footer.html", '#footer-placeholder');
     </script>
     
+    <div class="container">
+        <img src="/assets/me.png" alt="Ignas Volčokas" id="image" class="picture">
+
+        <div class="content" id="content">
+            <h1>Hi 👋 I am Ignas Vol&ccaron;okas</h1>
+            <p> I am a rising senior in Washington and Lee University. I am majoring in Computer Science and minoring in Philosophy.
+                I work as a Teaching Assistant for the Computer Science department, a Peer Tutor and am on the executive teams of GenTech and Volleyball Club.
+            </p>
+        
+        </div>
+    </div>
+
     <div class="resume">
-    <section class="about-me">
-        <h1>About Me</h1>
-        <p>Hi I am Ignas Vol&ccaron;okas 👋, a rising junior in Washington and Lee University. I am majoring in Computer Science and minoring in Philosophy.
-            I am currently a Teaching Assistant for the Computer Science department and an Editorial Assistant for a Sociology and Anthropology professor.</p>
-            <a href="world.html">WORLD</a>
-    </section>
-        <section class="skills">
+        
+        <section class="skills section">
             <div class="programming-skills">
-                <h2>Programming Skills</h2>
+                
+                <h2 class="title">Programming Skills</h2>
+                <div class="meat">
                 <label>Python</label>
                 <div class="skills"><div class="skill python"></div></div>
                 <label>Java</label>
@@ -55,32 +65,39 @@
                 <label>HTML/CSS</label>
                 <div class="skills"><div class="skill html-css"></div></div>
             </div>
-            <div class="other-skills">
-                <h2>Other Skills</h2>
+            </div>
+            <div class="other-skills section">
+                <h2 class="title">Other Skills</h2>
+                <div class="meat">
                 <label>Microsoft Office</label>
                 <div class="skills"><div class="skill office"></div></div>
                 <label>Data Analysis</label>
                 <div class="skills"><div class="skill data-analysis"></div></div>
                 <label>Stata</label>
                 <div class="skills"><div class="skill stata"></div></div>
+                </div>
             </div>
         </section>
         
-        <section class="education">
-            <h2>Education</h2>
+        <section class="education section">
+            <h2 class="title">Education</h2>
+        <div class="meat">
+
             <div class="entry">
                 <h3>Student, Washington and Lee University</h3>
                 <p>2021 – 2025</p>
                 <p>One of the top liberal arts colleges in the country. Due to high academic achievement made President's list two years in a row. Current GPA: 3.970.</p>
             </div>
-        <div class="entry">
-            <h3>Student, United World College, Dilijan, Armenia</h3>
-            <p>2019 – 2021</p>
-            <p>An international boarding school with a goal of bringing people from all across the world to educate and work towards sustainable and peaceful future. Curriculum: International Baccalaureate (IB) Final Exam Score: 41/45.</p>
+            <div class="entry">
+                <h3>Student, United World College, Dilijan, Armenia</h3>
+                <p>2019 – 2021</p>
+                <p>An international boarding school with a goal of bringing people from all across the world to educate and work towards sustainable and peaceful future. Curriculum: International Baccalaureate (IB) Final Exam Score: 41/45.</p>
+            </div>
+
         </div>
         </section>
     </div>
-    <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     
 </body>
