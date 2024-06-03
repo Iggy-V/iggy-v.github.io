@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignas Volčokas Projects</title>
+    <link rel="stylesheet" href="project_template.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+</head>
+<body>
+    <div class="container">
+            <h1 id="esylearn">We Do That</h1> <hr>
+            <h4>Create, join and see the events surrounding you in your community. Connection has never been this easy!</h4>
+            <p ><img src="/assets/weDoThat.png" alt="Example email that would be sent each day" style="width: 60%;" /></p>
+            <h3>Overview</h3>
+            <p>A initial try of trying to create a website that would allow people to connect with their local communities.</p>
+            <p>This project was created during HooHacks 2024 in University of Virginia!</p>
+            <h3>Goals</h3>
+            <ul>
+                <li>Create a web application that allows for people to log-in, post, and join different events</li>
+                <li>Implement a database to keep track of what has been posted and registered for</li>
+                <li>Implement searchability features, like search tab and filters</li>
+            </ul>
+            <h3>Lessons Learnt:</h3>
+            <ul>
+                <li>How to create a dynamic website with a database</li>
+                <li>MySQL and PHP</li>
+                <li>How to dynamically generate content</li>
+            </ul>
+            <h3>Team Members:</h3>
+            <ul>
+                <li>Mark Holden</li>
+            </ul>
+            <h3>Future Work</h3>
+            <ul>
+                <li>Ensure the log-in infromation is stored securly and there are certain requirements for username and password</li>
+                <li>Implement a way to delete posts</li>
+                <li>Implement a way to edit posts</li>
+                <li>Implement a user profile where other's can see who you are</li>
+                <li>Implement an authentication system so that only trusted individuals are on the platform &lpar; something like Uber &rpar;;</li>
+                <li>Limit the search area of the events only to a certain radius or location</li>
+
+            </ul>
+
+            <p>Source code can be found here: <a href="https://github.com/Iggy-V/HooHacks-2024">GitHub</a></p>
+        </div>
+    </div>
+        <div id="footer-placeholder"></div>
+
+        <script>
+            // Function to load HTML content and inject it into the DOM
+            function loadHTML(url, selector, insertMethod = 'innerHTML') {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(html => {
+                        if (insertMethod === 'insertAdjacentHTML') {
+                            document.querySelector(selector).insertAdjacentHTML('afterbegin', html);
+                        } else {
+                            document.querySelector(selector)[insertMethod] = html;
+                        }
+                    })
+                    .catch(error => console.error(`Error loading the HTML from ${url}:`, error));
+            }
+        
+            // Load the header
+            loadHTML("/assets/html/header.html", 'body', 'insertAdjacentHTML');
+        
+            // Load the footer
+            loadHTML("/assets/html/footer.html", '#footer-placeholder');
+        </script>
+        
+</body>
+</html>

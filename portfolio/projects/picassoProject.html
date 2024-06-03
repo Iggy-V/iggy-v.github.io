@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignas Volčokas Projects</title>
+    <link rel="stylesheet" href="project_template.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+</head>
+<body>
+    <div class="container">
+            <h1 id="esylearn">Picasso Project</h1> <hr>
+            <h4>Create Art with the x and y coordinates!</h4>
+            <p ><img src="/assets/picassoProject.gif" alt="Example email that would be sent each day" style="width: 60%;" /></p>
+            <h3>Overview</h3>
+            <p>Final project for my CSCI 209: Software Development class.</p>
+            <p>You just have to put in a mathematical expression that uses x and/or y and boom art unfold before your eyes.</p>
+            <h3>Goals</h3>
+            <ul>
+                <li>Understanding code base</li>
+                <li>Implementing basic functionality</li>
+                <li>Adding unique extensions</li>
+            </ul>
+            <h3>Lessons Learnt:</h3>
+            <ul>
+                <li>How to code in Java and best Java practices</li>
+                <li>How to use Eclipse IDE</li>
+                <li>The importance of Single-Responsibility principle and DRY principle</li>
+                <li>How to add new inventive features to a code base given.</li>
+            </ul>
+            <h3>Personal Contribution:</h3>
+            <ul>
+                <li>Defined Variable GUI Extension - showcases what expression is currently being used.</li>
+                <li>History Toggle Extension - shows previously entered expressions and allows with the arrow keys to toggle between the different expressions.</li>
+                <li>Implemented multiple unary expressions like times and division.</li>
+            </ul>
+            <h3>Team Members:</h3>
+            <ul>
+                <li>Jack</li>
+                <li>Uno</li>
+                <li>Joe</li>
+            </ul>
+
+            <p>Source code can be found here: <a href="https://github.com/Iggy-V/picasso-project">GitHub</a></p>
+        </div>
+    </div>
+        <div id="footer-placeholder"></div>
+
+        <script>
+            // Function to load HTML content and inject it into the DOM
+            function loadHTML(url, selector, insertMethod = 'innerHTML') {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(html => {
+                        if (insertMethod === 'insertAdjacentHTML') {
+                            document.querySelector(selector).insertAdjacentHTML('afterbegin', html);
+                        } else {
+                            document.querySelector(selector)[insertMethod] = html;
+                        }
+                    })
+                    .catch(error => console.error(`Error loading the HTML from ${url}:`, error));
+            }
+        
+            // Load the header
+            loadHTML("/assets/html/header.html", 'body', 'insertAdjacentHTML');
+        
+            // Load the footer
+            loadHTML("/assets/html/footer.html", '#footer-placeholder');
+        </script>
+        
+</body>
+</html>
