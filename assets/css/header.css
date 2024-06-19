@@ -16,8 +16,8 @@ body {
 
 .header-title {
     margin: 0;
-    color: black; /* Black color for the title */
-    font-size: 20px;
+    color: rgb(48, 48, 48); /* Black color for the title */
+    font-size: 25px;
     text-decoration: none;
 }
 
