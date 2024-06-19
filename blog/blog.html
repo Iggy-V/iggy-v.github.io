@@ -3,31 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-
+    <title>Portfolio</title>
     <link rel="stylesheet" href="blog.css">
-    <link rel="stylesheet" href="blog_header.css">
+    <link rel="stylesheet" href="/assets/css/header.css"> 
     <link rel="stylesheet" href="/assets/css/footer.css">
 
-
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
 
 </head>
 <body>
     <div id="header"></div> <!-- Placeholder for the header -->
-
-    <div class="intro">
-        <hr>
-        <h1>The Iggy Chronicle</h1>
-        <hr>
-        <input type="text" id="searchInput" placeholder="Search portfolio by title or tag...">
+    <div class="title">
+        <h1>Tea Time with Ignas</h1>
+        <h2 class="est">EST. 2024</h2>
     </div>
+    <div class="intro">
+        <input type="text" id="searchInput" placeholder="Search articles by title or tag...">
+        <select id="topicSelect">
+            <option value="">Topics:</option>
+            <option value="Books">Books</option>
+            <option value="Movies">Movies</option>
+            <option value="Politics">Politics</option>
+            <option value="Travel">Travel</option>
+            <option value="Philosophy">Philosophy</option>
+            <option value="Coding">Coding</option>
+            <option value="Other">Other</option>
+        </select>
+        <button id="showAll" class="button">Show All</button>
+    </div>    
+
 
     <div id="portfolioContainer">
         <!-- Portfolio items added by JavaScript -->
     </div>
 
-    <script src="blog_script.js"></script>
+    <div id="footer-placeholder"></div>
+    <script src="blog.js"></script>
     <script>
         // Function to load HTML content and inject it into the DOM
         function loadHTML(url, selector, insertMethod = 'innerHTML') {
@@ -48,7 +60,9 @@
     
         // Load the footer
         loadHTML("/assets/html/footer.html", '#footer-placeholder');
+        
     </script>
+    
     
 </body>
 </html>

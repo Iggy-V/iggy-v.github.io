@@ -1,43 +1,82 @@
-body {
+body, html {
     margin: 0;
-    font-family: 'Times New Roman', serif; /* Mimics old newspaper typefaces */
-    background-color: #f4f4f4; /* Off-white, paper-like background */
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #fdfdfd;
+    color: #333;
 }
 
 .header-container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 12px;
+    border-bottom: 2px solid #ccc;
+    background-color: #f8f8f8;
 }
 
 .header-title {
     margin: 0;
-    color: black; /* Black color for the title */
-    font-size: 20px;
+    color: black;
+    font-size: 24px;
     text-decoration: none;
-    font-family: 'Times New Roman', Times, sans-serif;
+    font-weight: bold;
+}
+
+.header-nav {
+    display: flex;
+    gap: 15px;
 }
 
 .header-nav a {
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 10px 20px;
     color: #333;
-    background-color: transparent; /* No solid fill, only outlines */
-    border: 2px solid #333; /* Solid border mimicking old style */
-    outline: none;
+    border: 1px solid #aaa;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 0; /* Remove rounded corners for a more traditional look */
     transition: background-color 0.3s, transform 0.2s;
-    text-shadow: none; /* Remove modern text-shadow */
+    border-radius: 0;
+    background-color: #e0e0e0;
 }
 
 .header-nav a:hover {
-    background-color: #ddd; /* Light grey background on hover */
-    color: #222; /* Slightly darker text on hover */
+    background-color: #bbb;
+    transform: scale(1.05);
 }
 
+.header-nav a:active {
+    transform: scale(0.95);
+}
+
+.portfolio {
+    background-color: #c0e2c3;
+}
+
+.about {
+    background-color: #c1d8f0;
+}
+
+.home {
+    background-color: #f8e6a4;
+}
+
+.blog {
+    background-color: #f5c1d2;
+}
+
+.CV {
+    background-color: #f2c5a8;
+}
+
+.header-nav a.portfolio,
+.header-nav a.about,
+.header-nav a.home,
+.header-nav a.blog,
+.header-nav a.CV {
+    color: #333;
+    text-shadow: none;
+    border-radius: 0;
+}

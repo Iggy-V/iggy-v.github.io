@@ -1,68 +1,224 @@
 body, html {
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+.title{
+    text-align: center;
+    margin: 20px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+    font-size: 30px;
+}
+
+.est{
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .intro {
-    padding: 10px;
-    padding-top: 0;
+    padding-top: 0px;
+    padding: 20px;
     text-align: center;
+    font-size: 20px;
 }
-h1{
-    font-family: 'Helvetica', serif;
-    font-weight: 900;
-    font-size: 60px;
-    text-transform: uppercase;
-    display: inline-block;
-    line-height: 72px;
-    margin-bottom: 20px;
-    margin-top: 20px;
 
-}
 .tag {
     display: inline-block;
-    padding: 2px 8px;
+    /* background-color: #ddd; */
+    padding: 5px 5px;
     margin: 2px;
-    background-color: #eee; /* Light grey like aged paper */
-    border: 1px  #666; /* Dashed border adds to the old style */
-    font-size: 14px; /* Smaller font size for tags */
-    border-radius: 0; /* No rounded corners for a more authentic newspaper feel */
-    cursor: pointer;
-    margin-top: 10px;
+    color: #333;
+    font-size: 12px;
+    border-radius: 15px;
+    border: #bbbbbb 0.5px solid;
+    cursor: default;
     transition: background-color 0.3s;
+    filter: grayscale(100%);
 }
 
 .tag:hover {
-    background-color: #ccc; /* Darker on hover like interactive ads in newspapers */
-    color: #000; /* Ensuring high contrast on hover */
+    transform: scale(1.05);
 }
+.tag:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+}
+
+.philosophy:hover { background-color: #b6eef2; }
+.politics:hover { background-color: #c2f0c1; }
+.movies:hover { background-color: #eea4f8; }
+.books:hover { background-color: #f8e6a4; }
+.travel:hover {background-color: #fec7a0;}
+.other:hover { background-color: #f5c1d2; }
+.coding:hover { background-color: #e6b3f8; }
+
+
 
 #searchInput {
     padding: 10px;
     width: 300px;
     margin-top: 10px;
+    border-radius: 20px;
+    border: #bbbbbb 0.5px solid;
+}
+
+#topicSelect {
+    padding: 5px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 15px;
+    border: #bbbbbb 0.5px solid;
 }
 
 #portfolioContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Adjust the gap between items */
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
 }
 
 .projectBox {
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 20px;
-    padding-bottom: 10px;
-    margin-bottom: 0;
-    width: calc(25% - 40px); /* Subtract total horizontal padding and margins */
-    transition: transform 0.3s ease-in-out;
+    break-inside: avoid;
+    margin-bottom: 40px;
+    width: 100%;
+    box-shadow: none;
+    /* border: 1px solid #ccc; */
+    overflow: hidden;
+    padding: 10px;
+    background-color: #fff;
+    transition: transform 0.3s;
+}
 
+.projectBox:hover {
+    transform: translateY(-3px);
 
 }
 
+.projectBox img {
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
 
-.projectBox:hover {
-    transform: translateY(-5px);
+
+.projectBox:hover img{
+    filter: grayscale(0%);
+
+}
+.projectBox:hover .tag{
+    filter: grayscale(0%);
+
+}
+
+.project-title{
+    font-size: 20px;
+    margin:0px;
+
+}
+.project-date {
+    color: gray;
+    font-style: italic;
+    margin: 5px 0;
+}
+
+.project-description {
+    margin: 5px 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.button {
+    padding: 5px 10px;
+    background-color: #fff;
+    margin-left: 5px;
+    color: #333;
+    font-size: 14px;
+    border: #bbbbbb 0.5px solid;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+img {
+    width: 350px;
+    height: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+
+
+
+
+.header-nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-shadow: 1px 1px 2px black;
+    filter: grayscale(100%);
+
+}
+.header-nav a:hover {
+    transform: scale(1.05); /* Slightly enlarges the button */
+    filter: grayscale(0%);
+
+}
+
+.header-nav a:active {
+    transform: scale(0.95); /* Mimics a button press effect */
+    filter: grayscale(100%);
+
+}
+
+.portfolio {
+    background-color: #06d6a0;
+}
+
+.about {
+    background-color: #26547c;
+}
+
+.home {
+    background-color: #ffd166;
+}
+
+.blog {
+    background-color: #ef476f;
+}
+
+.CV{
+    background-color: #ffd166;
 }
