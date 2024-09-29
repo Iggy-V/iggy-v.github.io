@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 6, title: 'We Do That - Rediscover Community', description: 'Create, join and see the events surrounding you in your community. Connection has never been this easy!', tags: ['HTML-CSS', 'PHP', 'MySQL'], url: 'projects/weDoThat.html', image: '/assets/weDoThat.png', isPersonalBest: true},
         { id: 7, title: 'Picasso Project', description: 'Some say math and art are opposite, but I think it\'s their more similar than different. Find the beauty of the X and Y.', tags: ['Java'], url: 'projects/picassoProject.html', image: '/assets/picassoProject.png' },
         { id: 8, title: 'Three.js Landing Page', description: 'Some experimentation with the landing page for a website using Three.js', tags: ['Three.js', 'JavaScript'], url: 'https://github.com/Iggy-V/WebsiteLandingPage', image: '/assets/landingPage.png' },
-        { id: 2, title: 'GitHub Profile', description: 'Show some support by following me on GitHub!', tags: [], url: 'https://github.com/Iggy-V'},
+        { id: 2, title: 'GitHub Profile', description: 'Show some support by following me on GitHub!', tags: [], url: 'https://github.com/Iggy-V', image: "/assets/github.png"},
+        { id: 9, title: 'Discord Bot for Daily Coding Problem', description: 'Code and data for Discord bot which sends a link to a Leetcode problem everyday', tags: ['Python', 'Bash'], url: 'https://github.com/Iggy-V/DiscordBot', image: "/assets/DiscordBot.png"},
+
 
     ];
 
