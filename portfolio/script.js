@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 8, title: 'Three.js Landing Page', description: 'Some experimentation with the landing page for a website using Three.js', tags: ['Three.js', 'JavaScript'], url: 'https://github.com/Iggy-V/WebsiteLandingPage', image: '/assets/landingPage.png' },
         { id: 2, title: 'GitHub Profile', description: 'Show some support by following me on GitHub!', tags: [], url: 'https://github.com/Iggy-V', image: "/assets/github.png"},
         { id: 9, title: 'Discord Bot for Daily Coding Problem', description: 'Code and data for Discord bot which sends a link to a Leetcode problem everyday', tags: ['Python', 'Bash'], url: 'https://github.com/Iggy-V/DiscordBot', image: "/assets/DiscordBot.png"},
-
+        { id: 10, title: 'GRE Vocabulary Teacher', description: 'A interactive way to learn vocabulary commonly seen in the GRE exam!', tags: ['Python'], url: 'https://github.com/Iggy-V/GRE-Vocab-Teacher', image: "/assets/GREBot.png"},
 
     ];
 
