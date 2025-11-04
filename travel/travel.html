@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iggy's Travels</title>
+    <!-- <link rel="stylesheet" href="travel.css"> -->
+    <link rel="stylesheet" href="/assets/css/header.css"> 
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <script src="//cdn.jsdelivr.net/npm/globe.gl"></script>
+    <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+        color: #333;
+        height: auto;       /* let page height expand naturally */
+        overflow-x: hidden; /* optional: prevent horizontal scroll */
+    }
+
+    .container {
+        position: relative;
+    }
+
+    #globeViz {
+        width: 100%;
+        height: 100vh;  /* fill the viewport */
+    }
+
+    .container.split #globeViz {
+        width: 50vw;
+        transform: translateX(-25vw);
+    }
+    .info-panel {
+        width: 0;
+        max-height: 100vh;
+        overflow-y: auto;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+        position: absolute; /* CHANGE: make panel overlay globe */
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;       /* ensure it's above the globe */
+        border-left: 3px solid #667eea;
+        box-shadow: -3px 0 10px rgba(0,0,0,0.2); /* optional for visibility */
+    }
+
+    .container.split .info-panel {
+        width: 50vw; /* open panel */
+    }
+
+    .info-content {
+        padding: 40px;
+        opacity: 1;
+        transform: translateX(0);
+        color: #333; /* make sure text is visible */
+    }
+    
+    .container.split .info-content {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #667eea;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+        z-index: 1000;
+    }
+
+    .close-btn:hover {
+        background: #764ba2;
+    }
+
+    .country-title {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .country-status {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .lived {
+        background: rgba(144, 238, 144, 0.2);
+        color: #2d5a2d;
+        border: 2px solid lightgreen;
+    }
+
+    .visited {
+        background: rgba(173, 216, 230, 0.2);
+        color: #1e3a8a;
+        border: 2px solid blue;
+    }
+
+    .country-description {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .country-details {
+        background: rgba(102, 126, 234, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+    }
+
+    .detail-item {
+        margin-bottom: 15px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .detail-value {
+        color: #666;
+        margin-left: 10px;
+    }
+
+    .instruction {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        color: #333;
+        backdrop-filter: blur(5px);
+        transition: opacity 0.5s ease;
+    }
+
+    .container.split .instruction {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .country-details h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+    }
+    .detail-value {
+        color: #1e3a8a; /* make visited/lived countries more visible */
+        font-weight: bold;
+    }
+
+    footer {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-top: 1px solid #ddd;
+    }
+</style>
+
+</head>
+
+
+
+<body>
+  <div class="container" id="mainContainer">
+    <div id="globeViz"></div>
+    <div class="info-panel" id="infoPanel">
+      <button class="close-btn" id="closeBtn">×</button>            
+      <div class="info-content" id="infoContent"></div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script src="/assets/js/footer-loader.js"></script>
+
+</body>
+
+
+ <script>
+        // Function to load HTML content and inject it into the DOM
+        function loadHTML(url, selector, insertMethod = 'innerHTML') {
+            fetch(url)
+                .then(response => response.text())
+                .then(html => {
+                    if (insertMethod === 'insertAdjacentHTML') {
+                        document.querySelector(selector).insertAdjacentHTML('afterbegin', html);
+                    } else {
+                        document.querySelector(selector)[insertMethod] = html;
+                    }
+                })
+                .catch(error => console.error(`Error loading the HTML from ${url}:`, error));
+        }
+    
+        // Load the header
+        loadHTML("/assets/html/header.html", 'body', 'insertAdjacentHTML');
+    
+        // Load the footer
+        loadHTML("/assets/html/footer.html", '#footer-placeholder');
+    </script>    
+    <!-- <div id="worldMap"></div> -->
+
+
+  <script type="module">
+    import { MeshLambertMaterial, DoubleSide } from 'https://esm.sh/three';
+    import * as topojson from 'https://esm.sh/topojson-client';
+    const lived = ['840', '440', '051', '528']; // numeric IDs for Lithuania, USA, France
+    const visited = [
+    '480','268','458','764','792','704','020','040','056','203',
+    '208','250','300','348','380','428','442','470','578','616',
+    '620','724','752','756','826','292','336','124'
+    ];
+    const countryInfo = {
+    // Lived countries
+    '840': { name: 'United States', status: 'lived', description: '', details: {} },
+    '440': { name: 'Lithuania', status: 'lived', description: '', details: {} },
+    '051': { name: 'Armenia', status: 'lived', description: '', details: {} },
+    '528': { name: 'Netherlands', status: 'lived', description: '', details: {} },
+
+    // Visited countries
+    '480': { name: 'Mauritius', status: 'visited', description: '', details: {} },
+    '268': { name: 'Georgia', status: 'visited', description: '', details: {} },
+    '458': { name: 'Malaysia', status: 'visited', description: '', details: {} },
+    '764': { name: 'Thailand', status: 'visited', description: '', details: {} },
+    '792': { name: 'Turkey', status: 'visited', description: '', details: {} },
+    '704': { name: 'Vietnam', status: 'visited', description: '', details: {} },
+    '020': { name: 'Andorra', status: 'visited', description: '', details: {} },
+    '040': { name: 'Austria', status: 'visited', description: '', details: {} },
+    '056': { name: 'Belgium', status: 'visited', description: '', details: {} },
+    '203': { name: 'Czechia', status: 'visited', description: '', details: {} },
+    '208': { name: 'Denmark', status: 'visited', description: '', details: {} },
+    '250': { name: 'France', status: 'visited', description: '', details: {} },
+    '300': { name: 'Greece', status: 'visited', description: '', details: {} },
+    '348': { name: 'Hungary', status: 'visited', description: '', details: {} },
+    '380': { name: 'Italy', status: 'visited', description: '', details: {} },
+    '428': { name: 'Latvia', status: 'visited', description: '', details: {} },
+    '442': { name: 'Luxembourg', status: 'visited', description: '', details: {} },
+    '4421': { name: 'Malta', status: 'visited', description: '', details: {} }, // note: no standard numeric code for Malta? can make custom
+    '578': { name: 'Norway', status: 'visited', description: '', details: {} },
+    '616': { name: 'Poland', status: 'visited', description: '', details: {} },
+    '620': { name: 'Portugal', status: 'visited', description: '', details: {} },
+    '724': { name: 'Spain', status: 'visited', description: '', details: {} },
+    '752': { name: 'Sweden', status: 'visited', description: '', details: {} },
+    '756': { name: 'Switzerland', status: 'visited', description: '', details: {} },
+    '826': { name: 'United Kingdom', status: 'visited', description: '', details: {} },
+    '292': { name: 'Gibraltar', status: 'visited', description: '', details: {} },
+    '336': { name: 'Vatican City', status: 'visited', description: '', details: {} },
+    '124': { name: 'Canada', status: 'visited', description: '', details: {} }
+};
+
+
+
+    const world = new Globe(document.getElementById('globeViz'))
+    .backgroundColor('rgba(0,0,0,0)')
+    .showGlobe(false)
+    .showAtmosphere(false)
+    .polygonStrokeColor(() => 'rgba(0,0,0,0.2)') // subtle borders
+    .polygonSideColor(() => 'darkgrey') // outline color
+    .onPolygonClick(handleCountryClick);
+
+
+    fetch('//cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+    .then(res => res.json())
+    .then(countriesTopo => {
+        const countries = topojson.feature(countriesTopo, countriesTopo.objects.countries).features;
+
+        
+    world.polygonsData(countries)
+        .polygonCapMaterial(feat => {
+            let color = '#536f87';
+
+            if (lived.includes(feat.id)) {
+            color = "#43803c";
+            } else if (visited.includes(feat.id)) {
+            color = '#d6bd27';
+            }
+
+            return new MeshLambertMaterial({ color, side: DoubleSide });
+        })
+    ;
+
+    });
+    // function handleCountryClick(polygon) {
+    //     const countryId = polygon.id;
+    //     const info = countryInfo[countryId] || {
+    //         name: polygon.properties.name || 'Unknown',
+    //         status: null,
+    //         description: '',
+    //         details: {}
+    //     };
+
+    //     showCountryInfo(info);
+    // }
+    function handleCountryClick() {
+        showTravelLists();
+    }
+        function showCountryInfo(info) {
+            const container = document.getElementById('mainContainer');
+            const infoContent = document.getElementById('infoContent');
+
+            // Determine status
+            let statusClass = '';
+            let statusText = '';
+            if (lived.includes(info.id)) {
+                statusClass = 'lived';
+                statusText = 'Lived Here';
+            } else if (visited.includes(info.id)) {
+                statusClass = 'visited';
+                statusText = 'Visited';
+            }
+
+            // Generate personal details
+            let detailsHtml = '';
+            for (const [label, value] of Object.entries(info.details || {})) {
+                detailsHtml += `
+                    <div class="detail-item">
+                        <span class="detail-label">${label}:</span>
+                        <span class="detail-value">${value}</span>
+                    </div>
+                `;
+            }
+
+            infoContent.innerHTML = `
+                <h1 class="country-title">${info.name}</h1>
+                ${statusText ? `<div class="country-status ${statusClass}">${statusText}</div>` : ''}
+                <p class="country-description">${info.description || ''}</p>
+                <div class="country-details">${detailsHtml}</div>
+                ${generateVisitedLivedList()}
+            `;
+
+            container.classList.add('split');
+        }
+    
+
+        // / Define closeInfo function globally
+        function closeInfo() {
+            const container = document.getElementById('mainContainer');
+            container.classList.remove('split');
+        }
+        function generateVisitedLivedList() {
+            let html = `<div class="country-details"><h3>My Travel Map</h3>`;
+
+            // Lived countries
+            if (lived.length) {
+                html += `<div class="detail-item"><span class="detail-label">Lived in:</span> `;
+                const names = lived.map(id => countryInfo[id]?.name || "Unknown").join(", ");
+                html += `<span class="detail-value">${names}</span></div>`;
+            }
+
+            // Visited countries
+            if (visited.length) {
+                html += `<div class="detail-item"><span class="detail-label">Visited:</span> `;
+                const names = visited.map(id => countryInfo[id]?.name || "Unknown").join(", ");
+                html += `<span class="detail-value">${names}</span></div>`;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        function showTravelLists() {
+            const container = document.getElementById('mainContainer');
+            const infoContent = document.getElementById('infoContent');
+
+            // Generate the HTML
+            let html = `<div class="country-details"><h3>My Travels</h3>`;
+
+            // Lived countries
+            if (lived.length) {
+                const names = lived.map(id => countryInfo[id]?.name || "Unknown").join(", ");
+                html += `<div class="detail-item"><span class="detail-label">Lived in:</span> 
+                        <span class="detail-value">${names}</span></div>`;
+            }
+
+            // Visited countries
+            if (visited.length) {
+                const names = visited.map(id => countryInfo[id]?.name || "Unknown").join(", ");
+                html += `<div class="detail-item"><span class="detail-label">Visited:</span> 
+                        <span class="detail-value">${names}</span></div>`;
+            }
+
+            html += `</div>`;
+
+            infoContent.innerHTML = html;
+
+            // Open the side panel
+            container.classList.add('split');
+        }
+
+
+        
+        // Add event listener to close button
+        document.getElementById('closeBtn').addEventListener('click', closeInfo);
+        // Initialize globe camera position
+        world.pointOfView({ altitude: 2.5 });
+        
+    
+  </script>
+
+</html>

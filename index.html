@@ -91,18 +91,11 @@
         showStickman();
     </script>     -->
 
+<div id="footer-placeholder"></div>
+<script src="/assets/js/footer-loader.js"></script>
 
-    <div id="footer-placeholder"></div>
 
-    <script>
-        // Load the footer.html content
-        fetch("/assets/html/footer.html")
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById("footer-placeholder").innerHTML = html;
-            })
-            .catch(error => console.error('Error loading the footer:', error));
-    </script>
+
 </body>
 
 </html>
