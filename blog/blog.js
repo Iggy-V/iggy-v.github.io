@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const projects = [
         { id: 1, title: '1st Article', date: '20xx-xx-xx', description: 'My Thoughts on ...', tags: ['Philosophy', 'Movies'], url: '', image: '/assets/work-in-progress.png'},
-        { id: 2, title: '2nd Article', date: '20xx-xx-xx', description: 'My Thoughts on ...', tags: ['Movies', 'Travel'], url: '', image: '/assets/work-in-progress.png'},
+        { id: 2, title: '2nd Article', date: '20xx-xx-xx', description: 'My Thoughts on ...', tags: ['Movies', 'Travels'], url: '', image: '/assets/work-in-progress.png'},
         { id: 3, title: '3rd Article', date: '20xx-xx-xx', description: 'Exploring the depths of ...', tags: ['Books', 'Philosophy'], url: '', image: '/assets/work-in-progress.png'},
 
     

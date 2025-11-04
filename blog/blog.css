@@ -62,7 +62,7 @@ body, html {
 .topic-tag.politics.selected { background-color: #c2f0c1; }
 .topic-tag.movies.selected { background-color: #eea4f8; }
 .topic-tag.books.selected { background-color: #f8e6a4; }
-.topic-tag.travel.selected { background-color: #fec7a0; }
+.topic-tag.traveling.selected { background-color: #fec7a0; }
 .topic-tag.other.selected { background-color: #f5c1d2; }
 .topic-tag.coding.selected { background-color: #e6b3f8; }
 
@@ -92,7 +92,7 @@ body, html {
 .politics:hover { background-color: #c2f0c1; }
 .movies:hover { background-color: #eea4f8; }
 .books:hover { background-color: #f8e6a4; }
-.travel:hover {background-color: #fec7a0;}
+.traveling:hover {background-color: #fec7a0;}
 .other:hover { background-color: #f5c1d2; }
 .coding:hover { background-color: #e6b3f8; }
 
